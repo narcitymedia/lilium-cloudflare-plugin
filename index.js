@@ -37,7 +37,10 @@ class CloudflareLiliumPlugin extends Plugin {
 
             this.clearFiles(_c, [
                 (_c.server.protocol + _c.server.url + pkg.article.url), 
-                ...((pkg.article.aliases || []).map(url => _c.server.protocol + _c.server.url + url))
+                (_c.server.protocol + _c.server.url + pkg.article.url + ".json"), 
+                (_c.server.protocol + _c.server.url + pkg.article.url + ".html"), 
+                ...((pkg.article.aliases || []).map(url => _c.server.protocol + _c.server.url + url)),
+                ...((pkg.article.aliases || []).map(url => _c.server.protocol + _c.server.url + url + ".json"))
             ], (err, body) => {
                 if (err.length == 0) {
                     log("Cloudflare", "Cleared Cloudflare cache for post " + pkg.article.url, "success");
