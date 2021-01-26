@@ -39,6 +39,7 @@ class CloudflareLiliumPlugin extends Plugin {
                 (_c.server.protocol + _c.server.url + pkg.article.url), 
                 (_c.server.protocol + _c.server.url + pkg.article.url + ".json"), 
                 (_c.server.protocol + _c.server.url + pkg.article.url + ".html"), 
+                (_c.server.protocol + _c.server.url + "/post/" + (pkg.article._id || pkg.article.id)),
                 ...((pkg.article.aliases || []).map(url => _c.server.protocol + _c.server.url + url)),
                 ...((pkg.article.aliases || []).map(url => _c.server.protocol + _c.server.url + url + ".json"))
             ], (err, body) => {
